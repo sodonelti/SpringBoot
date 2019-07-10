@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(function() {
+	 $("#form").submit(function(evt) {
+		 evt.preventDefault();
+		 var id = $("#id").val()
+		 
+		 var url = "/fetch?id="+id;
+		 $.ajax({
+				url : url,
+				method : 'GET',
+			/* 	data : JSON.stringify(obj), */
+				/* contentType : 'application/json', */
+				success : function(response) {
+					alert(JSON.stringify(response));
+				} 
+		 })
+	 })
+})	  		
+</script>
+</head>
+<body>
+	<form id="form">
+			Enter id : <input type = "number" id="id" /> <br />
+			<button type="submit">Register</button>
+	</form>
+</body>
+</html>

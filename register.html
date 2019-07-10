@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Form</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(function() {
+	 $("#form").submit(function(evt) {
+		 evt.preventDefault();
+		 var obj = {
+				 name : $("#name").val(),
+		  		 dob : $("#dob").val(),
+		  		 age : $("#age").val(),
+		  		 email : $("#email").val()
+		  		 };
+		 
+		 var url = "/register";
+		 $.ajax({
+				url : url,
+				method : 'POST',
+				data : JSON.stringify(obj),
+				contentType : 'application/json',
+				
+				success : function(response) {
+					alert(JSON.stringify(response));
+				} 
+		 })
+	 })
+})
+		  		 
+</script>
+</head>
+<body>
+<form id="form">
+Enter Name : <input  id="name" /> <br />
+Enter DOB : <input id="dob"> <br />
+Enter Age : <input id="age" /> <br />
+Enter Email : <input id="email" /> <br />
+<button type="submit">Register</button>
+</form>
+</body>
+</html>
